@@ -211,10 +211,6 @@ var svg = d3.select("body")
 						<pre><code>var map = dataset.map(function(d, i) {
   return {'key': i, 'value': d};
 });</code></pre>
-						<!--<ul>
-							<li>Normalize values</li>
-							<li>Make charts more flexible for changing</li>
-						</ul>-->
 					</section>
 					<section>
 						<h2>Koła proporcjonalnie</h2>
@@ -227,57 +223,6 @@ var svg = d3.select("body")
 						<object class="fragment" data-fragment-index="2" data="../demos/circles/scales.html" type="text/html" width="960" height="500">
 						</object>
 					</section>
-					<!--<section>
-						<h2>Placing circles by value</h2>
-						<pre><code>  .domain([15, 70])
-
-  .attr('cx', function(d) { return xScale(d.value); })</code></pre>
-						<object data="../demos/circles/scales2.html" type="text/html" width="960" height="500">
-						</object>
-					</section>
-					<section>
-						<h2>Flexibility</h2>
-						<pre><code>width = 560,</code></pre>
-						<object data="../demos/circles/scales3.html" type="text/html" width="960" height="500">
-							
-						</object>
-					</section>
-					<section>
-						<h2>Two scales</h2>
-						<pre><code>var xScale = d3.scale.linear()
-  .domain([0, 4])
-  .range([0, width]);
-  
-var yScale = d3.scale.linear()
-  .domain([0, 4])
-  .range([0, height]);</code></pre>
-						<object data="../demos/circles/scales5.html" type="text/html" width="960" height="500">
-							
-						</object>
-					</section>
-					<section>
-						<h2>Mirroring</h2>
-						<pre><code>var yScale = d3.scale.linear()
-  .domain([0, 4])
-  .range([height, 0]);</code></pre>
-						<object data="../demos/circles/scales6.html" type="text/html" width="960" height="500">
-							
-						</object>
-					</section>
-					<section>
-						<h2>Crazy effect</h2>
-						<pre><code>var xScale = d3.scale.linear()
-  .domain([15, 70])
-  .range([0, width]);
-  
-var yScale = d3.scale.linear()
-  .domain([0, 4])
-  .range([0, height]);</code></pre>
-						<object data="../demos/circles/scales4.html" type="text/html" width="960" height="500">
-							
-						</object>
-					</section>-->
-					
 				</section>
 
 				<section>
@@ -345,21 +290,6 @@ var yScale = d3.scale.linear()
 						<object class="fragment" data-fragment-index="1" data="../demos/circles/colors2.html" type="text/html" width="960" height="500">
 						</object>
 					</section>
-					<!--<section>
-						<h2>Fill and stroke</h2>
-						<pre><code class="javascript">.attr('r', 0)
-  .transition()
-  .duration(1000)
-    .attr('r', function(d) { return d.value; })
-    .transition()
-    .duration(500)
-      .style('stroke-width', 5)
-      .style('stroke', function(d) {
-      	return d3.rgb(colors(d.key)).darker();
-      });</code></pre>
-						<object data="../demos/circles/colors3.html" type="text/html" width="960" height="500">
-						</object>
-					</section>-->
 					<section>
 						<h2>Interpolacja</h2>
 						<pre class="fragment visible"><code class="javascript">var colors = d3.scale.linear()
@@ -372,18 +302,6 @@ var yScale = d3.scale.linear()
 						<object class="fragment" data-fragment-index="1" data="../demos/circles/colors4.html" type="text/html" width="960" height="500">
 						</object>
 					</section>
-					<!--<section>
-						<h2>Example 5</h2>
-						<pre><code class="javascript">var colors = d3.scale.linear()
-.domain([0, 4])
-.range(['orange', 'green', 'purple']);
-
-.style('stroke', function(d) {
-  return d3.rgb(colors(d.key)).lighter();
-});</code></pre>
-						<object data="../demos/circles/colors5.html" type="text/html" width="960" height="500">
-						</object>
-					</section>-->
 				</section>
 				
 				<section>
@@ -431,15 +349,6 @@ svg.append("g")
 							<li><code>shuffle()</code> zmienia losowo kolejność wartości podanej tablicy</li>
 						</ul>
 					</section>
-					<!--<section>
-						<h2>Example</h2>
-						<pre><code class="javascript">.attr('r', 0)
- .transition()
-  .duration(function(d) {return d.value * 100 })
-    .attr('cx', function(d) { return xScale(d.key); })</code></pre>
-						<object data="../demos/circles/ordering.html" type="text/html" width="960" height="500">
-						</object>
-					</section>-->
 					<section>
 						<h2>Tabice asocjacyjne</h2>
 						<ul>
@@ -566,31 +475,6 @@ svg.append('path')
 							Bundle, Chord, Cluster, Force, Hierarchy, Histogram, Pack, Partition, Pie, Stack, Tree, Treemap
 						</p>
 					</section>
-					<!--<section>
-						<h2>Pie chart</h2>
-						<pre><code class="javascript">var arc = d3.svg.arc()
-  .outerRadius(190)
-  .innerRadius(110);
-
-var pie = d3.layout.pie()
-  .sort(null)
-  .value(function(d) { return d.value; });
-
-var g = svg.selectAll('.arc')
-  .data(pie(map))
-  .enter()
-  .append('g')
-    .attr('class', 'arc');
-
-g.append('path')
-  .attr('d', arc)
-  .style('fill', function(d) { return colors(d.data.key); });</code></pre>
-					</section>
-					<section>
-						<h2>Pie chart</h2>
-						<object data="../demos/circles/index1.html" type="text/html" width="960" height="500">
-						</object>
-					</section>-->
 					<section>
 						<h2>Pie chart</h2>
 						<object data="../examples/pie/index.html" type="text/html" width="960" height="500">
