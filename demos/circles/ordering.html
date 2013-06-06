@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-  <head>
-=======
 	<head>
->>>>>>> live demo on gh pages
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -33,20 +29,28 @@
 				var svg = d3.select(".container")
 							.append("svg")
 							.attr("width", width + margin.left + margin.right)
-							.attr("height", height + margin.top + margin.bottom)
-								.append('g').attr('transform', 'translate('+margin.left+','+margin.top+')');
+							.attr("height", height + margin.top + margin.bottom);
+				
+				var colors = d3.scale.linear()
+					.domain([d3.min(dataset), 30, d3.max(dataset)])
+					.range(['red', 'green', 'blue']);
 				
 				var colors = d3.scale.category10();
 				
 				var xScale = d3.scale.linear()
-					.domain([0, 4])
-					.range([0, width]);
+					//.domain([-1, 5])
+					.domain([d3.min(dataset), d3.max(dataset)])
+					.range([0 + margin.left, width - margin.right]);
 				
 				svg.selectAll('circle')
 					.data(map)
 					.enter()
 					.append('circle')
-							.attr('cx', function(d) { return xScale(d.key); })
+						.attr('r', 0)
+						.transition()
+						.duration(1000)
+						//.duration(function(d) {return d.value * 100 })
+							.attr('cx', function(d) { return xScale(d.value); })
 							.attr('cy', 100)
 							.attr('r', function(d) { return d.value; });
 				
@@ -55,13 +59,9 @@
 					.enter()
 					.append('text')
 						.text(function(d) { return d.value; } )
-						.attr('x', function(d) { return xScale(d.key) - (18/2); })
+						.attr('x', function(d) { return xScale(d.value) - (18/2); })
 						.attr('y', function(d) { return 100 + (12/2) });
 			</script>
 		</div>
 	</body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> live demo on gh pages

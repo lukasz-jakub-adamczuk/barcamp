@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Big Data Demo - Barcamp Onet</title>
+		<meta name="description" content="Multiple Area Charts with D3.js " />
+		<meta name="keywords" content="d3.js, area charts, zoom, pan, data, infographic, ajavscript, chart" />
+		<meta name="author" content="ash" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css' />
+		<script src="js/d3.v3.min.js"></script>
+		<!--<script src="startsall.js"></script>-->
+	</head>
+	<body>
+		<button onclick="init()">Refresh</button>
+		<div class="container">
+			<script type="text/javascript">
+			var init = function() {
+				// init
+				d3.select('svg').remove();
+				
+				var dataset = [15, 70, 30, 50, 20];
+				
+				var width = 960,
+					height = 500;
+					
+				var svg = d3.select(".container")
+							.append("svg")
+							.attr("width", width)
+							.attr("height", height);
+				
+				var xScale = d3.scale.linear()
+					.domain([d3.min(dataset), d3.max(dataset)])
+					.range([0, width]);
+				
+				svg.selectAll('circle')
+					.data(dataset)
+					.enter()
+					.append('circle')
+						.attr('class', 'transparent')
+						.attr('cx', function(d) { return d * 2; })
+						.attr('cy', 100)
+						.attr('r', function(d) { return d; });
+				
+			};
+ 			init();
+ 			setInterval(function() { init(); }, 5000);
+			</script>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>data-driven documents - Onet Barcamp</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<section>
+						<h1>d3.js</h1>
+						<h3>w kolorowym świecie danych</h3>
+						<p>
+							<small><a href="http://adamczuk.net/">Łukasz Adamczuk</a><!-- / <a href="http://twitter.com/lukasz-jakub-adamczuk">@lukasz-jakub-adamczuk</a>--></small>
+						</p>
+					</section>
+					<section>
+						<h2>Plan prezentacji</h2>
+						<ol>
+							<li>Opis i koncepcje biblioteki</li>
+							<li>Zalety i wady</li>
+							<li>Podstawowe wizualizacje</li>
+							<li>Złożone wizualizacje</li>
+							<li>Podsumowanie</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Co to takiego?</h2>
+						<object data="../examples/reel/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Szczegóły</h2>
+						<ul>
+							<li>Jedna z najpopularniejszych bibliotek na GitHub</li>
+							<li>293kB (137kB)</li>
+							<li>Licencja BSD</li>
+							<li>Autorem jest <a href="https://github.com/mbostock">Mike Bostock</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Kod źródłowy</h2>
+						<pre><code class="javascript">d3=function(){function n(n){return null!=n&&!isNaN(n)}function t(n){ret
+urn n.length}function e(n){for(var t=1;n*t%1;)t*=10;return t}function r
+(n,t){try{for(var e in t)Object.defineProperty(n.prototype,e,{value:t[e
+],enumerable:!1})}catch(r){n.prototype=t}}function u(){}function i(){}f
+unction a(n,t,e){return function(){var r=e.apply(t,arguments);return r=
+==t?n:r}}function o(){}function c(n){function t(){for(var t,r=e,u=-1,i=
+r.length;++u&gt;i;)(t=r[u].on)&&t.apply(this,arguments);return n}var e=
+[],r=new u;return t.on=function(t,u){var i,a=r.get(t);return arguments.
+length&gt;2?a&&a.on:(a&&(a.on=null,e=e.slice(0,i=e.indexOf(a)).concat(e
+.slice(i+1)),r.remove(t)),u&&e.push(r.set(t,{on:u})),n)},t}function l()
+{ca.event.stopPropagation(),ca.event.preventDefault()}function f(){for(
+var n,t=ca.event;n=t.sourceEvent;)t=n;return t}function s(n,t){function
+e(){n.on(t,null)}n.on(t,function(){l(),e()},!0),setTimeout(e,0)}functio
+n h(n){for(var t=new o,e=0,r=arguments.length;++e&gt;r;)t[arguments[e]]
+=c(t);return t.of=function(e,r){return function(u){try{var i=u.sourceEv
+ent=ca.event;u.target=n,ca.event=u,t[u.type].apply(e,r)}finally{ca.even
+t=i}}},t}function g(n,t){var e=n.ownerSVGElement||n;if(e.createSVGPoint
+){var r=e.createSVGPoint();if(0&lt;va&&(fa.scrollX||fa.scrollY)){e=ca.s
+elect(la.body).append("svg").style("position","absolute").style("top",0
+						</code></pre>
+					</section>
+				</section>
+				
+				<section>
+					<h2>Dlaczego?</h2>		
+					<ul>
+						<li>Łączy dane z elementami DOM</li>
+						<li>Wspiera CSS oraz JS</li>
+						<li>Łatwość analizowania i rozszerzania</li>
+						<li>Szybkość, prostota i wydajność</li>
+						<li>Animacje i przejścia</li>
+					</ul>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Ograniczenia</h2>
+						<ul>
+							<li>Brak wsparcia dla SVG w IE8 i Android 2.x</li>
+							<li>Spory narzut czasowy przy prostych wykresach</li>
+							<li>Zawsze widoczne podstawowe dane</li>
+							<li>Mnóstwo elementów zwalnia renderowanie DOM</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Alternatywy</h2>
+						<ul>
+							<li>Spróbuj <a href="http://nvd3.org/">NVD3</a> lub <a href="http://code.shutterstock.com/rickshaw/">Rickshaw</a></li>
+							<li>Jeśli potrzebujesz tysięcy punktów, pomyśl o canvas</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<h1>Podstawy</h1>
+				</section>
+				
+				<section>
+					<h2>Koncepcje</h2>
+					<p>
+						Zamiast mówić D3 jak coś zrobić, powiedz tylko czego chcesz.
+					</p>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Selekcje</h2>
+						<ul>
+							<li>Główna koncepcja do zrozumienia D3</li>
+							<li>Selekcje są tablicami elementów w dokumencie</li>
+							<li>D3 używa CSS3 do znalezienia elementów</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Wiązanie danych</h2>
+						<ul>
+							<li><code>data()</code> łączy określone dane z elementami</li>
+							<li>Metody po <code>data()</code> są uruchamiane dla każdego elementu</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Selekcje poboczne</h2>
+						<ul>
+							<li><code>enter()</code> tworzy nowe węzły</li>
+							<li><code>exit()</code> usuwa istniejące węzły</li>
+						</ul>
+					</section>
+					<section>
+						<h2>API</h2>
+						<ul>
+							<li><code>attr()</code> pobiera lub ustawia atrybut</li>
+							<li><code>style()</code> pobiera lub ustawia CSS</li>
+							<li><code>property()</code> pobiera lub ustawia właściwość</li>
+							<li><code>text()</code> pobiera lub ustawia węzeł tekstowy textContent</li>
+							<li><code>html()</code> pobiera lub ustawia zawartość innerHTML</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Konfiguracja</h2>
+						<pre class="fragment visible"><code class="javascript">var dataset = [15, 70, 30, 50, 20];
+
+var width = 960,
+    height = 500;
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);</code></pre>
+						<object class="fragment" data-fragment-index="1" data="../demos/circles/selections.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Tworzymy koła</h2>
+						<pre class="fragment visible"><code class="javascript">svg.selectAll('circle')
+  .data(dataset)
+  .enter()
+  .append('circle')</code></pre>
+    					<pre class="fragment" data-fragment-index="1"><code class="javascript">    .attr('cx', function(d) { return d * 2; })
+    .attr('cy', 100)
+    .attr('r', function(d) { return d; });</code></pre>
+					    <object class="fragment" data-fragment-index="2" data="../demos/circles/selections2.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Skale</h2>
+						<p>
+							Funkcje, które odwzorowują wartości zbioru na zewnętrzny zakres.
+						</p>
+					</section>
+					<section>
+						<h2>Mapowanie danych</h2>
+						<pre><code>var map = dataset.map(function(d, i) {
+  return {'key': i, 'value': d};
+});</code></pre>
+						<!--<ul>
+							<li>Normalize values</li>
+							<li>Make charts more flexible for changing</li>
+						</ul>-->
+					</section>
+					<section>
+						<h2>Koła proporcjonalnie</h2>
+						<pre class="fragment visible"><code>var xScale = d3.scale.linear()
+  .domain([0, 4])
+  .range([0, width]);</code></pre>
+<pre class="fragment" data-fragment-index="1"><code>  .attr('cx', function(d) { return xScale(d.key); })
+  .attr('cy', 100)
+  .attr('r', function(d) { return d.value; });</code></pre>
+						<object class="fragment" data-fragment-index="2" data="../demos/circles/scales.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<!--<section>
+						<h2>Placing circles by value</h2>
+						<pre><code>  .domain([15, 70])
+
+  .attr('cx', function(d) { return xScale(d.value); })</code></pre>
+						<object data="../demos/circles/scales2.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Flexibility</h2>
+						<pre><code>width = 560,</code></pre>
+						<object data="../demos/circles/scales3.html" type="text/html" width="960" height="500">
+							
+						</object>
+					</section>
+					<section>
+						<h2>Two scales</h2>
+						<pre><code>var xScale = d3.scale.linear()
+  .domain([0, 4])
+  .range([0, width]);
+  
+var yScale = d3.scale.linear()
+  .domain([0, 4])
+  .range([0, height]);</code></pre>
+						<object data="../demos/circles/scales5.html" type="text/html" width="960" height="500">
+							
+						</object>
+					</section>
+					<section>
+						<h2>Mirroring</h2>
+						<pre><code>var yScale = d3.scale.linear()
+  .domain([0, 4])
+  .range([height, 0]);</code></pre>
+						<object data="../demos/circles/scales6.html" type="text/html" width="960" height="500">
+							
+						</object>
+					</section>
+					<section>
+						<h2>Crazy effect</h2>
+						<pre><code>var xScale = d3.scale.linear()
+  .domain([15, 70])
+  .range([0, width]);
+  
+var yScale = d3.scale.linear()
+  .domain([0, 4])
+  .range([0, height]);</code></pre>
+						<object data="../demos/circles/scales4.html" type="text/html" width="960" height="500">
+							
+						</object>
+					</section>-->
+					
+				</section>
+
+				<section>
+					<section>
+						<h2>Przejścia</h2>
+						<p>
+							Specjalne selekcje, w których działanie operatorów następuje płynnie, a nie natychmiast.
+						</p>
+					</section>
+					<section>
+						<h2>API</h2>
+						<ul>
+							<li><code>transition()</code> rozpoczyna nowe przejście</li>
+							<li><code>delay()</code> ustawia opóźnienie w milisekundach</li>
+							<li><code>duration()</code> ustawia czas trwania w milisekundach</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Pokaż koła</h2>
+						<pre class="fragment visible"><code class="javascript">.attr('r', 0)
+  .transition()
+  .duration(1000)
+    .attr('r', function(d) { return d.value; })</code></pre>
+						<object class="fragment" data-fragment-index="1" data="../demos/circles/transitions.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Wolniej!</h2>
+						<pre class="fragment visible"><code class="javascript">.attr('r', 0)
+  .transition()
+  .duration(function(d) { return d.value * 100; })
+    .attr('r', function(d) { return d.value; })</code></pre>
+    					<pre class="fragment" data-fragment-index="1"><code>  .transition()
+  .delay(function(d) { return d.value * 100; })</code></pre>
+						<object class="fragment" data-fragment-index="2" data="../demos/circles/transitions2.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Kolory</h2>
+						<p>
+							Bezcenna wartość twojej wizualizacji.
+						</p>
+					</section>
+					<section>
+						<h2>Czerwono i zielono</h2>
+						<pre class="fragment visible"><code class="javascript">.style('fill', 'red')
+  .transition()
+  .duration(function(d) { return d.value * 100; })
+    .style('fill', 'green')</code></pre>
+						<object class="fragment" data-fragment-index="1" data="../demos/circles/colors.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Skala kolorów</h2>
+						<pre class="fragment visible"><code class="javascript">var colors = d3.scale.category10();
+
+.style('fill', function(d) { return colors(d.value); });
+
+.duration(2000)
+
+.delay(2000)</code></pre>
+						<object class="fragment" data-fragment-index="1" data="../demos/circles/colors2.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<!--<section>
+						<h2>Fill and stroke</h2>
+						<pre><code class="javascript">.attr('r', 0)
+  .transition()
+  .duration(1000)
+    .attr('r', function(d) { return d.value; })
+    .transition()
+    .duration(500)
+      .style('stroke-width', 5)
+      .style('stroke', function(d) {
+      	return d3.rgb(colors(d.key)).darker();
+      });</code></pre>
+						<object data="../demos/circles/colors3.html" type="text/html" width="960" height="500">
+						</object>
+					</section>-->
+					<section>
+						<h2>Interpolacja</h2>
+						<pre class="fragment visible"><code class="javascript">var colors = d3.scale.linear()
+.domain([0, 4])
+.range(['white', 'black']);
+
+.style('stroke', function(d) {
+  return d3.rgb(colors(d.key)).darker();
+});</code></pre>
+						<object class="fragment" data-fragment-index="1" data="../demos/circles/colors4.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<!--<section>
+						<h2>Example 5</h2>
+						<pre><code class="javascript">var colors = d3.scale.linear()
+.domain([0, 4])
+.range(['orange', 'green', 'purple']);
+
+.style('stroke', function(d) {
+  return d3.rgb(colors(d.key)).lighter();
+});</code></pre>
+						<object data="../demos/circles/colors5.html" type="text/html" width="960" height="500">
+						</object>
+					</section>-->
+				</section>
+				
+				<section>
+					<section>
+						<h2>Osie</h2>
+						<p>
+							D3 wpiera tworzenie etykiet i osi.
+						</p>
+					</section>
+					<section>
+						<h2>Oś pozioma</h2>
+						<pre class="fragment visible"><code class="javascript">var xAxis = d3.svg.axis()
+  .scale(xScale).orient("bottom").ticks(5);
+
+svg.append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(0, " + (height) + ")")
+  .call(xAxis);</code></pre>
+						<object class="fragment" data-fragment-index="1" data="../demos/circles/axes.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Tablice</h2>
+						<p>
+							Podstawowym typem danych w D3 jest tablica.
+						</p>
+					</section>
+					<section>
+						<h2>Metody JS</h2>
+						<p>
+							D3 udostępnia szereg metod dla tablic, ale zanim z nich skorzystasz, zapoznaj się z metodami wbudowanymi w JavaScript.
+						</p>
+					</section>
+					<section>
+						<h2>Metody d3</h2>
+						<ul>
+							<li><code>min()</code> zwraca minimalną wartość podanej tablicy</li>
+							<li><code>max()</code> zwraca maksymalną wartość podanej tablicy</li>
+							<li><code>mean()</code> zwraca średnią z wartości podanej tablicy</li>
+							<li><code>sum()</code> zwraca sumę z wartości podanej tablicy</li>
+							<li><code>extent()</code> zwraca wartości minimalną i maksymalną</li>
+							<li><code>shuffle()</code> zmienia losowo kolejność wartości podanej tablicy</li>
+						</ul>
+					</section>
+					<!--<section>
+						<h2>Example</h2>
+						<pre><code class="javascript">.attr('r', 0)
+ .transition()
+  .duration(function(d) {return d.value * 100 })
+    .attr('cx', function(d) { return xScale(d.key); })</code></pre>
+						<object data="../demos/circles/ordering.html" type="text/html" width="960" height="500">
+						</object>
+					</section>-->
+					<section>
+						<h2>Tabice asocjacyjne</h2>
+						<ul>
+							 <li>Powszechny typ danych w JavaScript</li>
+							 <li><strong>Pamiętaj</strong>, że porządek iteracji nie jest zdefiniowany!</li>
+							 <li>D3 oferuje konkretne metody do konwersji tablic asocjacyjnych do klasycznych tablic.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Mapy i zbiory</h2>
+						<pre><code class="javascript">
+	var arr = [10, 20, 30];
+	
+	> arr; // [10, 20, 30]
+	
+	> d3.map(arr); // u {0: 10, 1: 20, 2: 30}
+	
+	> d3.set(arr); // i {10: true, 20: true, 30: true}
+						</code></pre>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Ładowanie danych</h2>
+						<ul>
+							<li>Wiele sposobów dostarczenia danych do przeglądarki</li>
+							<li>Asynchroniczne żądania dla określonych adresów</li>
+							<li>Większość przeglądarek <strong>nie</strong> zezwala na żądania do innych domen</li>
+						</p>
+					</section>
+					<section>
+						<h2>API</h2>
+						<ul>
+							<li><code>json()</code> wysyła żądanie dla pliku JSON</li>
+							<li><code>xml()</code> wysyła żądanie dla pliku XML</li>
+							<li><code>html()</code> wysyła żądanie dla pliku HTML</li>
+							<li><code>csv()</code> wysyła żądanie dla pliku CSV</li>
+							<li><code>tsv()</code> wysyła żądanie dla pliku TSV</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Przetwarzanie</h2>
+						<p>
+							D3 oferuje wbudowane wsparcie dla formatów CSV i TSV
+						</p>
+						<p>
+							Pliki CSV i TSV są często o wiele <strong>lżejsze</strong> niż JSON, co zmniejsza czas ładowania dużych zestawów danych.
+						</p>
+					</section>
+					<section>
+						<h2>CSV czy JSON?</h2>
+						<p>
+							<strong>sample.json</strong> (4 212 bytes)
+						</p>
+						<pre><code class="javascript">[{"date":"Jun 2000","price":1454.6},
+{"date":"Jul 2000","price":1430.83},
+{"date":"Aug 2000","price":1517.68},
+{"date":"Sep 2000","price":1436.51},
+{"date":"Oct 2000","price":1429.4},
+...</code></pre>
+						<p>
+							<strong>sample.csv</strong> (2 007 bytes)
+						</p>
+						<pre><code class="ini">date,price
+Jan 2000,1394.46
+Feb 2000,1366.42
+Mar 2000,1498.58
+Apr 2000,1452.43
+...</code></pre>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Kształty</h2>
+						<p>
+							D3 oferuje szereg generatorów dla podstawowych kszałtów.
+						</p>
+						<p>
+							Linie, obszary, łuki czy symbole wykorzystuje się w wizualizacjach.
+						</p>
+					</section>
+					<section>
+						<h2>Generator liniowy</h2>
+						<pre class="fragment visible"><code class="javascript">var line = d3.svg.line()
+    .x(function(d, i) { return xScale(i); })
+    .y(function(d) { return yScale(d); });
+
+svg.append('path')
+    .data(dataset)
+    .attr('d', line(dataset));</code></pre>
+    					<object class="fragment" data-fragment-index="1" data="../demos/circles/shapes.html" type="text/html" width="960" height="500">
+						</object>
+    				</section>
+    				<section>
+						<h2>Generator obszarowy</h2>
+						<pre class="fragment visisble"><code class="javascript">var area = d3.svg.area()
+    .x(function(d, i) { return xScale(i); })
+    .y0(height + margin.top)
+    .y1(function(d) { return yScale(d); });
+
+svg.append('path')
+    .data(dataset)
+    .attr('d', area(dataset));</code></pre>
+    					<object class="fragment" data-fragment-index="1" data="../demos/circles/shapes2.html" type="text/html" width="960" height="500">
+						</object>
+    				</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Układy</h2>
+						<p>
+							D3 nie wyświetla gotowych wizualizacji, ale znacząco manipuluje danymi.
+						</p>
+					</section>
+					<section>
+						<h2>Możliwości</h2>
+						<p>
+							Bundle, Chord, Cluster, Force, Hierarchy, Histogram, Pack, Partition, Pie, Stack, Tree, Treemap
+						</p>
+					</section>
+					<!--<section>
+						<h2>Pie chart</h2>
+						<pre><code class="javascript">var arc = d3.svg.arc()
+  .outerRadius(190)
+  .innerRadius(110);
+
+var pie = d3.layout.pie()
+  .sort(null)
+  .value(function(d) { return d.value; });
+
+var g = svg.selectAll('.arc')
+  .data(pie(map))
+  .enter()
+  .append('g')
+    .attr('class', 'arc');
+
+g.append('path')
+  .attr('d', arc)
+  .style('fill', function(d) { return colors(d.data.key); });</code></pre>
+					</section>
+					<section>
+						<h2>Pie chart</h2>
+						<object data="../demos/circles/index1.html" type="text/html" width="960" height="500">
+						</object>
+					</section>-->
+					<section>
+						<h2>Pie chart</h2>
+						<object data="../examples/pie/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Partition</h2>
+						<object data="../examples/partition/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Treemap</h2>
+						<object data="../examples/treemap/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<h2>Pack</h2>
+						<object data="../examples/pack/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Geografia</h2>
+						<p>
+							Modele map i odwzorowań kartograficznych dają szerokie pole do wizualizacji.
+						</p>
+					</section>
+					<section>
+						<object data="../examples/projections/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<object data="../examples/world-map/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+				</section>
+				
+				<!--<section>
+					<section>
+						<h2>Geometria</h2>
+						<p>
+							Voronoi, Quadtree, Polygon, Hull
+						</p>
+					</section>
+					
+				</section>-->
+				
+				<section>
+					<section>
+						<h2>Zachowanie</h2>
+						<p>
+							Interaktywna wizualizacja przekazuje więcej informacji.
+						</p>
+					</section>
+					<section>
+						<object data="../examples/particles/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+					<section>
+						<object data="../examples/panning/index.html" type="text/html" width="960" height="500">
+						</object>
+					</section>
+				</section>
+				
+				<section>
+					<h1>Przykłady</h1>
+				</section>
+				
+				<section>
+					<h2>Arc Clock</h2>
+					<object data="../examples/clock/index.html" type="text/html" width="960" height="500">
+					</object>
+				</section>
+				
+				<!--<section>
+					<h2>Collision Detection</h2>
+					<object data="../examples/collision-detection/index.html" type="text/html" width="960" height="500">
+					</object>
+				</section>-->
+				
+				<section>
+					<object data="../examples/voronoi/index.html" type="text/html" width="960" height="500">
+					</object>
+				</section>
+				
+				<section>
+					<h2>Build own graph!</h2>
+					<object data="../examples/graph/index.html" type="text/html" width="960" height="500">
+					</object>
+				</section>
+					
+				<section data-state="whiteout">
+					<object data="../examples/koalas/index.html" type="text/html" width="960" height="640">
+					</object>
+				</section>
+				
+				<section>
+					<h2>Wiele więcej</h2>
+					<ul>
+						<li><a href="https://github.com/mbostock/d3/wiki/Gallery">https://github.com/mbostock/d3/wiki/Gallery</a></li>
+						<li><a href="http://bl.ocks.org/mbostock">http://bl.ocks.org/mbostock</a></li>
+						<li><a href="http://bost.ocks.org/mike/">http://bost.ocks.org/mike/</a></li>
+				</section>
+				
+				<section>
+					<h2>Podsumowanie</h2>
+				</section>
+				
+				<section>
+					<h1>Koniec</h1>
+					<h3>Łukasz Adamczuk</h3>
+				</section>
+				
+				<section>
+					<h1>Pytania</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				//width: 960,
+				width: 1024,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+			
+			Reveal.addEventListener( 'fragmentshown', function( event ) {
+			    //alert('aaa');
+			} );
+			
+			Reveal.addEventListener( 'runcode', function() {
+			    //alert('runcode');
+			    //init();
+			    //document.getElementByTagName('button').click();
+			}, false );
+
+		</script>
+
+	</body>
+</html>
