@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Big Data Demo - Barcamp Onet</title>
+		<meta name="description" content="Multiple Area Charts with D3.js " />
+		<meta name="keywords" content="d3.js, area charts, zoom, pan, data, infographic, ajavscript, chart" />
+		<meta name="author" content="ash" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css' />
+		<script src="js/d3.v3.min.js"></script>
+		<!--<script src="startsall.js"></script>-->
+	</head>
+	<body>
+		<div class="container">
+			<script type="text/javascript">
+				var dataset = [15, 70, 30, 50, 20];
+				
+				var map = dataset.map(function(d, i) {
+					return {'key': i, 'value': d};
+				});
+				
+				var margin = {top: 50, right: 30, bottom: 50, left: 30},
+					width = 960 - margin.left - margin.right,
+					height = 500 - margin.top - margin.bottom;
+					
+				var svg = d3.select(".container")
+							.append("svg")
+							.attr("width", width + margin.left + margin.right)
+							.attr("height", height + margin.top + margin.bottom);
+				
+				var colors = d3.scale.linear()
+					.domain([d3.min(dataset), 30, d3.max(dataset)])
+					.range(['red', 'green', 'blue']);
+				
+				var colors = d3.scale.category10();
+				
+				var xScale = d3.scale.linear()
+					//.domain([-1, 5])
+					.domain([d3.min(dataset), d3.max(dataset)])
+					.range([0 + margin.left, width - margin.right]);
+				
+				svg.selectAll('circle')
+					.data(map)
+					.enter()
+					.append('circle')
+						.attr('r', 0)
+						.transition()
+						.duration(1000)
+						//.duration(function(d) {return d.value * 100 })
+							.attr('cx', function(d) { return xScale(d.value); })
+							.attr('cy', 100)
+							.attr('r', function(d) { return d.value; });
+				
+				svg.selectAll('text')
+					.data(map)
+					.enter()
+					.append('text')
+						.text(function(d) { return d.value; } )
+						.attr('x', function(d) { return xScale(d.value) - (18/2); })
+						.attr('y', function(d) { return 100 + (12/2) });
+			</script>
+		</div>
+	</body>
+</html>
